@@ -1,32 +1,17 @@
-# 꼬맨틀 — 단어 유사도 추측 게임
+# Semantle in Korean: 단어 추측 게임
 
-이 레포지터리는 Johannes Gätjen의 [Semantlich](http://semantlich.johannesgaetjen.de/)
-([소스코드](https://github.com/gaetjen/semantle-de))를 포크하여,
-한국어로 플레이할 수 있도록 수정한 것입니다.
+Semantle is a Python-based tool for calculating semantic similarity scores between guessed and correct words in this project. The scores are represented as a number ranging from -100 to +100, with higher scores indicating greater degrees of similarity between the two words.
+<br><br>
 
-### Setup
+### Requriements
 
-Download Word2Vec and dictionary data:
-```bash
-cd data
-wget https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.ko.300.vec.gz
-gzip -d cc.ko.300.vec.gz
-wget https://github.com/spellcheck-ko/hunspell-dict-ko/releases/download/0.7.92/ko-aff-dic-0.7.92.zip
-unzip ko-aff-dic-0.7.92.zip
-```
+- Python 3.6 or higher
+- FastText pre-trained with Common Crawl and Wikipedia data (can be downloaded from FastText website)
+- Docker (optional, for running Semantle in a container)
 
-Filter and save word2vec in DB
-```bash
-docker-compose run --rm --entrypoint python app filter_words.py
-docker-compose run --rm --entrypoint python app process_vecs.py
-```
+<br><br>
+### Notes on Bias
 
-(Optional) Regenerate secrets
-```bash
-docker-compose run --rm --entrypoint python app generate_secrets.py
-```
+The FastText model used by Semantle is pre-trained with Common Crawl and Wikipedia data, which may introduce bias depending on the sources and quality of the data. It is recommended to evaluate the results of Semantle in the context of the data it was trained on.
 
-Start server
-```bash
-docker-compose up
-```
+In the project, when there is a guessed word in the 1,000 words that are most similar to the correct word, the word's similarity ranking is provided together.
