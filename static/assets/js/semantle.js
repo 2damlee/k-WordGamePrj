@@ -59,7 +59,7 @@ progress = ` <span class="progress-container">
     }
     let style = '';
     if (oldGuess === guess) {
-        style = 'style="color: #f7617a;font-weight: 600;"';
+        style = 'style="color: deeppink;font-weight: 600;"';
     }
     return `<tr><td>${guessNumber}</td><td ${style}>${oldGuess}</td><td>${similarity.toFixed(2)}</td><td class="${closeClass}">${percentileText}${progress}
 </td></tr>`;

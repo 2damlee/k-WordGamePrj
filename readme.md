@@ -3,6 +3,9 @@
 Semantle is a Python-based tool for calculating semantic similarity scores between guessed and correct words in this project. The scores are represented as a number ranging from -100 to +100, with higher scores indicating greater degrees of similarity between the two words.
 <br><br>
 
+<img src="./static/assets/img/screenshot.png" title="page_screenshot"/>
+
+<br><br>
 ### Requriements
 
 - Python 3.6 or higher
